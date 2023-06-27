@@ -9,10 +9,6 @@ function App() {
   const session = useSession();
   const { isLoading } = useSessionContext();
 
-  if (isLoading) {
-    return <></>;
-  }
-
   return (
     <>
       {isLoading ? (
