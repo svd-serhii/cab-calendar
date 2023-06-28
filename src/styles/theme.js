@@ -9,6 +9,14 @@ export const theme = {
     32, //5
     64, //6
   ],
+  fonts: {
+    main: {
+      regular: 'Roboto-Regular', //400
+      medium: 'Roboto-Medium', //500
+      bold: 'Roboto-Bold', //700
+      extraBold: 'Roboto-Black', //800
+    },
+  },
 
   fontSizes: [
     '12px', // 0
@@ -26,11 +34,11 @@ export const theme = {
     white: '#FDF7F2',
     grey: '#888888',
     black: '#111111',
-    blue: '#54ADFF',
-    lightBlue: '#CCE4FB',
-    green: '#00C3AD',
+    blue: '#057ef0',
+    lightBlue: '#2c93f5',
+    green: '#0a6169',
     red: '#F43F5E',
-    gradientBlue: 'linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%)',
+    // gradientBlue: 'linear-gradient(290.46deg, #1d74c2 0%, #9BD0FF 107.89%)',
   },
   boxShadows: {
     main: '3px 8px 14px rgba(136, 198, 253, 0.19)',
