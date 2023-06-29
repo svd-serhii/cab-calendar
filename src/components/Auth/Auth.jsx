@@ -7,7 +7,7 @@ const Auth = () => {
   const supabase = useSupabaseClient();
 
   async function googleSignIn() {
-    const { error, success } = await supabase.auth.signInWithOAuth({
+    const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
         scopes: 'https://www.googleapis.com/auth/calendar',
@@ -17,9 +17,9 @@ const Auth = () => {
       toast.error('Error logging in to Google provider with Supabase');
       console.log(error);
     }
-    if (success) {
-      toast.success('You are logged in');
-    }
+    // if (success) {
+    //   toast.success('You are logged in');
+    // }
   }
 
   return (
