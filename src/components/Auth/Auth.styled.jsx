@@ -6,7 +6,6 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  outline: solid red;
 `;
 
 export const AuthTitle = styled.h1`

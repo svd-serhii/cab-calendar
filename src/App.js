@@ -2,23 +2,42 @@ import { useSession, useSessionContext } from '@supabase/auth-helpers-react';
 import Auth from './components/Auth/Auth';
 import { Event } from './components/Event/Event';
 import { Loader } from './components/Loader/Loader';
-import Container from './components/Container/Container';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Layout from './components/Layout/Layout';
+import Calendar from './components/Calendar/Calendar';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  const session = useSession();
-  const { isLoading } = useSessionContext();
-
   return (
-    <>
-      <Container>
-        {isLoading ? <Loader /> : session ? <Event /> : <Auth />}
-
-        <ToastContainer autoClose={2000} theme="light" />
-      </Container>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Auth />} />
+        <Route path="calendar" element={<Calendar />} />
+      </Route>
+    </Routes>
   );
 }
 
 export default App;
+
+{
+  /* <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route path="dashboard" element={<Dashboard />} />
+      <Route path="calendar" element={<Calendar />} />
+      <Route path="board" element={<BoardPage />} />
+      <Route path="users" element={<DataGrid />} />
+    </Route>
+  </Routes>
+</BrowserRouter>;
+
+<>
+  <Layout>
+    {isLoading ? <Loader /> : session ? <Calendar /> : <Auth />}
+
+    <ToastContainer autoClose={2000} theme="light" />
+  </Layout>
+</>; */
+}

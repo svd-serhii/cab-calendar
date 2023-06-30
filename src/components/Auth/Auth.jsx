@@ -1,10 +1,17 @@
 import React from 'react';
 import { AuthBtn, AuthTitle, ContentWrapper } from './Auth.styled';
 import { toast } from 'react-toastify';
-import { useSupabaseClient } from '@supabase/auth-helpers-react';
+import {
+  useSupabaseClient,
+  useSessionContext,
+  useSession,
+} from '@supabase/auth-helpers-react';
+import { Navigate } from 'react-router-dom';
 
 const Auth = () => {
   const supabase = useSupabaseClient();
+  const session = useSession();
+  const { isLoading } = useSessionContext();
 
   async function googleSignIn() {
     const { error } = await supabase.auth.signInWithOAuth({
@@ -17,21 +24,23 @@ const Auth = () => {
       toast.error('Error logging in to Google provider with Supabase');
       console.log(error);
     }
-    // if (success) {
-    //   toast.success('You are logged in');
-    // }
+  }
+  if (session) {
+    return <Navigate to="/calendar" />;
   }
 
   return (
-    <ContentWrapper>
-      <AuthTitle>
-        Вітаю на сайті планування кредитних угод.
-        <br /> Для подальшої роботи необхідно авторизуватись
-      </AuthTitle>
-      <AuthBtn type="button" onClick={googleSignIn}>
-        Авторизуватись через Google
-      </AuthBtn>
-    </ContentWrapper>
+    <>
+      <ContentWrapper>
+        <AuthTitle>
+          Вітаю на сайті планування кредитних угод.
+          <br /> Для подальшої роботи необхідно авторизуватись
+        </AuthTitle>
+        <AuthBtn type="button" onClick={googleSignIn}>
+          Авторизуватись через Google
+        </AuthBtn>
+      </ContentWrapper>
+    </>
   );
 };
 
