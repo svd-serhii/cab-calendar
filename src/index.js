@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename="/gcalendar">
     <React.StrictMode>
       <SessionContextProvider supabaseClient={supabase}>
         <ThemeProvider theme={theme}>
