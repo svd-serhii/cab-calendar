@@ -1,20 +1,25 @@
-import { useSession, useSessionContext } from '@supabase/auth-helpers-react';
-import Auth from './components/Auth/Auth';
-import { Event } from './components/Event/Event';
-import { Loader } from './components/Loader/Loader';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from './components/Layout/Layout';
+import MainPage from './pages/MainPage';
+import Auth from './components/Auth/Auth';
 import Calendar from './components/Calendar/Calendar';
-import { Route, Routes } from 'react-router-dom';
+import PublicRoute from './components/PublicRoute/PublicRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Auth />} />
-          <Route path="calendar" element={<Calendar />} />
+          <Route index element={<MainPage />} />
+          <Route element={<PublicRoute />}>
+            <Route path="login" element={<Auth />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="calendar" element={<Calendar />} />
+          </Route>
         </Route>
       </Routes>
       <ToastContainer autoClose={2000} theme="light" />

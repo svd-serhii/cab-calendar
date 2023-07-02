@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const HeaderWrapper = styled.header`
   display: flex;
@@ -19,7 +20,7 @@ export const Wrapper = styled.div`
   } */
 `;
 
-export const LogoWrapper = styled.div`
+export const LogoWrapper = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;

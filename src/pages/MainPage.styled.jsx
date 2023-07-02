@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const ContentWrapper = styled.div`
   height: 100%;
@@ -8,7 +9,7 @@ export const ContentWrapper = styled.div`
   align-items: center;
 `;
 
-export const AuthTitle = styled.h1`
+export const MainTitle = styled.h1`
   margin-top: 60px;
   margin-bottom: 40px;
   text-align: center;
@@ -17,10 +18,9 @@ export const AuthTitle = styled.h1`
   color: ${({ theme }) => theme.colors.green};
 `;
 
-export const AuthBtn = styled.button`
-  margin-top: 100px;
-  width: 300px;
-  padding: 10px 0 10px 0;
+export const MainBtn = styled(Link)`
+  width: auto;
+  padding: 10px 20px 10px 20px;
   background: ${({ theme }) => theme.colors.blue};
   border: none;
   border-radius: 40px;
