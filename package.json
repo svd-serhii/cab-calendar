@@ -1,6 +1,6 @@
 {
-  "name": "gcalendar",
-  "homepage": "https://svd-serhii.github.io/gcalendar",
+  "name": "cab-calendar",
+  "homepage": "https://svd-serhii.github.io/cab-calendar",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

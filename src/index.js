@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <SessionContextProvider supabaseClient={supabase}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename="/gcalendar">
+        <BrowserRouter basename="/cab-calendar">
           <App />
         </BrowserRouter>
       </ThemeProvider>
