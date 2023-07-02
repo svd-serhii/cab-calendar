@@ -10,34 +10,16 @@ import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Auth />} />
-        <Route path="calendar" element={<Calendar />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Auth />} />
+          <Route path="calendar" element={<Calendar />} />
+        </Route>
+      </Routes>
+      <ToastContainer autoClose={2000} theme="light" />
+    </>
   );
 }
 
 export default App;
-
-{
-  /* <BrowserRouter>
-  <Routes>
-    <Route path="/" element={<Layout />}>
-      <Route path="dashboard" element={<Dashboard />} />
-      <Route path="calendar" element={<Calendar />} />
-      <Route path="board" element={<BoardPage />} />
-      <Route path="users" element={<DataGrid />} />
-    </Route>
-  </Routes>
-</BrowserRouter>;
-
-<>
-  <Layout>
-    {isLoading ? <Loader /> : session ? <Calendar /> : <Auth />}
-
-    <ToastContainer autoClose={2000} theme="light" />
-  </Layout>
-</>; */
-}
