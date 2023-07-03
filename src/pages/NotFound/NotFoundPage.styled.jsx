@@ -4,15 +4,6 @@ export const MainContainer = styled.div`
   width: 100%;
   background-repeat: no-repeat;
   background-size: contain;
-
-  /* @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    background-image: url('/src/images/notfound.jpeg');
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    flex-direction: row;
-    background-image: url('/src/images/notfound.jpeg');
-  } */
 `;
 
 export const Title = styled.h2`
