@@ -14,6 +14,7 @@ import Container from '../Container/Container';
 import logo from '../../images/logo/logo-credit-agricole-jp-160.jpg';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
 import moment from 'moment';
+import { toast } from 'react-toastify';
 
 const Header = () => {
   const session = useSession();
@@ -21,6 +22,7 @@ const Header = () => {
 
   async function signOut() {
     await supabase.auth.signOut();
+    toast.info('Ви не авторизовані!');
   }
   return (
     <HeaderWrapper>
