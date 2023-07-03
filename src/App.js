@@ -9,6 +9,7 @@ import Calendar from './components/Calendar/Calendar';
 import PublicRoute from './components/PublicRoute/PublicRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import { Loader } from './components/Loader/Loader';
+import NotFoundPage from './pages/NotFound/NotFoundPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route element={<PrivateRoute />}>
               <Route path="calendar" element={<Calendar />} />
             </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>
