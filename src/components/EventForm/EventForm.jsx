@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
-import { Formik, Form, ErrorMessage, Field } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 import DateTimePicker from 'react-datetime-picker';
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
 import { toast } from 'react-toastify';
+import {
+  FormContainer,
+  ErrorContainer,
+  FieldContainer,
+  FormTitle,
+  EventBtn,
+  DateTitle,
+  FieldStyled,
+  DatePickerContainer,
+} from './EventForm.styled';
 
 const EventForm = () => {
   const [start, setStart] = useState(new Date());
@@ -84,8 +97,8 @@ const EventForm = () => {
   }
 
   return (
-    <div>
-      <h2>Форма призначення кредитної угоди</h2>
+    <FormContainer>
+      <FormTitle>Форма призначення кредитної угоди</FormTitle>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -93,79 +106,79 @@ const EventForm = () => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <div>
-              <Field
+            <FieldContainer>
+              <FieldStyled
                 type="text"
                 id="name"
                 name="name"
                 placeholder="Прізвище клієнта"
               />
-              <div>
-                <ErrorMessage name="name" component="span" />
-              </div>
-            </div>
-            <div>
-              <Field
+            </FieldContainer>
+            <ErrorContainer>
+              <ErrorMessage name="name" component="span" />
+            </ErrorContainer>
+
+            <FieldContainer>
+              <FieldStyled
                 type="text"
                 id="brand"
                 name="brand"
                 placeholder="Назва марки авто"
               />
-              <div>
-                <ErrorMessage name="brand" component="span" />
-              </div>
-            </div>
+            </FieldContainer>
+            <ErrorContainer>
+              <ErrorMessage name="brand" component="span" />
+            </ErrorContainer>
 
-            <div>
-              <Field
+            <FieldContainer>
+              <FieldStyled
                 type="text"
                 id="region"
                 name="region"
-                placeholder="Назва міста угоди"
+                placeholder="Назва міста"
               />
-              <div>
-                <ErrorMessage name="region" component="span" />
-              </div>
-            </div>
+            </FieldContainer>
+            <ErrorContainer>
+              <ErrorMessage name="region" component="span" />
+            </ErrorContainer>
 
-            <div>
-              <Field
+            <FieldContainer>
+              <FieldStyled
                 type="text"
                 id="branch"
                 name="branch"
                 placeholder="Номер відділення банку"
               />
-              <div>
-                <ErrorMessage name="branch" component="span" />
-              </div>
-            </div>
+            </FieldContainer>
+            <ErrorContainer>
+              <ErrorMessage name="branch" component="span" />
+            </ErrorContainer>
 
-            <div>
-              <Field
+            <FieldContainer>
+              <FieldStyled
                 type="text"
                 id="loan"
                 name="loan"
                 placeholder="Сума кредиту"
               />
-              <div>
-                <ErrorMessage name="loan" component="span" />
-              </div>
-            </div>
+            </FieldContainer>
+            <ErrorContainer>
+              <ErrorMessage name="loan" component="span" />
+            </ErrorContainer>
+            <DatePickerContainer>
+              <DateTitle>Початок угоди</DateTitle>
 
-            <p>Start of your event</p>
-            {/* <Field type="date" id="start" name="start"> */}
-            <DateTimePicker value={start} onChange={setStart} />
-            {/* </Field> */}
+              <DateTimePicker value={start} onChange={setStart} />
 
-            <p>End of your event</p>
-            {/* <Field type="date" id="start" name="end"> */}
-            <DateTimePicker value={end} onChange={setEnd} />
-            {/* </Field> */}
-            <button type="submit">Submit</button>
+              <DateTitle>Кінець угоди</DateTitle>
+
+              <DateTimePicker value={end} onChange={setEnd} />
+              <EventBtn type="submit">Призначити</EventBtn>
+            </DatePickerContainer>
           </Form>
         )}
       </Formik>
-    </div>
+    </FormContainer>
   );
 };
 

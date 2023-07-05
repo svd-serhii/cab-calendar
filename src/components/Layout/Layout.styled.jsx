@@ -6,6 +6,7 @@ export const ContentWrapper = styled.div`
 
 export const Main = styled.main`
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: center;
   /* height: calc(${({ screenHeight }) => screenHeight} - 72px); */
   padding: 10px;

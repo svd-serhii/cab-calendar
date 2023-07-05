@@ -11,7 +11,7 @@ const Layout = () => {
     <ContentWrapper>
       <Header />
       <Main>
-        <SideBar />
+        {/* <SideBar /> */}
         <Container>
           <Suspense fallback={null}>
             <Outlet />

@@ -7,13 +7,13 @@ import {
   UserWrapper,
   User,
   UserBtn,
-  DayWrapper,
-  Today,
+  BtnWrapper,
+  EventBtn,
+  CalendarBtn,
 } from './Header.styled';
 import Container from '../Container/Container';
 import logo from '../../images/logo/logo-credit-agricole-jp-160.jpg';
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react';
-import moment from 'moment';
 import { toast } from 'react-toastify';
 
 const Header = () => {
@@ -33,9 +33,10 @@ const Header = () => {
           </LogoWrapper>
           {session ? (
             <>
-              <DayWrapper>
-                <Today>{moment().format('dddd, Do MMM YYYY')}</Today>
-              </DayWrapper>
+              <BtnWrapper>
+                <EventBtn to="event">Призначити угоду</EventBtn>
+                <CalendarBtn to="calendar">Календар</CalendarBtn>
+              </BtnWrapper>
               <UserWrapper>
                 <User>{session.user.email}</User>
                 <UserBtn onClick={() => signOut()}>Вийти</UserBtn>

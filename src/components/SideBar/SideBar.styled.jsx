@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const ContentWrapper = styled.div`
   height: 100vh;
-  width: 150px;
+  width: 300px;
 
   display: flex;
 
