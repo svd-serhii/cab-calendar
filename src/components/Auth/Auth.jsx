@@ -6,11 +6,13 @@ import {
   useSessionContext,
   useSession,
 } from '@supabase/auth-helpers-react';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const supabase = useSupabaseClient();
   const session = useSession();
   const { isLoading } = useSessionContext();
+  const navigate = useNavigate();
   console.log(session);
   console.log(isLoading);
 
@@ -28,6 +30,7 @@ const Auth = () => {
     if (!response.error) {
       toast.success('Ви авторизувались на сайті!');
     }
+    navigate('/');
   }
 
   return (

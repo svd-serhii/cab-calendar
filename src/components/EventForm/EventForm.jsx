@@ -41,9 +41,9 @@ const EventForm = () => {
     end: new Date(),
   };
 
-  const onSubmit = values => {
-    console.log('onSubmit', values);
-  };
+  // const onSubmit = values => {
+  //   console.log('onSubmit', values);
+  // };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Прізвище клієнта обов'язкове!"),
@@ -55,30 +55,30 @@ const EventForm = () => {
     // end: Yup.date().required("Час закінчення угоди обов'язковий!"),
   });
 
-  async function createCalendarEvent() {
+  const createCalendarEvent = async (values, { isSubmitting, resetForm }) => {
     console.log('Creating calendar event');
     const event = {
-      summary: name,
+      summary: values.name,
       description: eventDescription,
       start: {
-        dateTime: start.toISOString(), // Date.toISOString() ->
+        dateTime: values.start.toISOString(), // Date.toISOString() ->
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       },
       end: {
-        dateTime: end.toISOString(), // Date.toISOString() ->
+        dateTime: values.end.toISOString(), // Date.toISOString() ->
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       },
       extendedProperties: {
-        private: {
-          brand: brand,
-          region: region,
-          branch: branch,
-          loan: loan,
+        shared: {
+          brand: values.brand,
+          region: values.region,
+          branch: values.branch,
+          loan: values.loan,
         },
       },
     };
     await fetch(
-      'https://www.googleapis.com/calendar/v3/calendars/primary/events',
+      'https://www.googleapis.com/calendar/v3/calendars/3cb2b605ac5379791713da02667bb0e5909508ffccc2401191aa79b8de9fd7f8@group.calendar.google.com/events',
       {
         method: 'POST',
         headers: {
@@ -92,16 +92,22 @@ const EventForm = () => {
       })
       .then(data => {
         console.log(data);
-        toast.success('Угоду призначено, перевірте свій Google Calendar!');
+        if (data.error) {
+          toast.error(data.error.message);
+        } else {
+          toast.success('Угоду призначено, перевірте свій Google Calendar!');
+        }
       });
-  }
+
+    resetForm();
+  };
 
   return (
     <FormContainer>
       <FormTitle>Форма призначення кредитної угоди</FormTitle>
       <Formik
         initialValues={initialValues}
-        onSubmit={onSubmit}
+        onSubmit={createCalendarEvent}
         validationSchema={validationSchema}
       >
         {({ isSubmitting }) => (
