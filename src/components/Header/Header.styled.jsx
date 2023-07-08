@@ -31,23 +31,23 @@ export const UserWrapper = styled.div`
   gap: 30px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 5px;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: unset;
+    gap: 20px;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    gap: 30px;
   }
 `;
 
 export const User = styled.p`
   font-family: ${({ theme }) => theme.fonts.main.bold};
-  font-size: ${({ theme }) => theme.fontSizes[2]};
+
   color: ${({ theme }) => theme.colors.green};
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
@@ -59,16 +59,15 @@ export const User = styled.p`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 18px;
   }
 `;
 export const UserBtn = styled.button`
-  width: 100px;
-  padding: 10px 0 10px 0;
   background: ${({ theme }) => theme.colors.blue};
   border: none;
   border-radius: 40px;
   font-family: ${({ theme }) => theme.fonts.main.bold};
-  font-size: ${({ theme }) => theme.fontSizes[2]};
+
   line-height: 1.1;
 
   letter-spacing: 0.04em;
@@ -98,6 +97,9 @@ export const UserBtn = styled.button`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: 100px;
+    padding: 10px 0 10px 0;
+    font-size: 18px;
   }
 `;
 
@@ -115,26 +117,27 @@ export const BtnWrapper = styled.div`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    flex-direction: unset;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
   }
 `;
 
 export const EventBtn = styled(Link)`
-  width: auto;
-  text-align: center;
-  padding: 10px 20px 10px 20px;
+  letter-spacing: 0.04em;
+  color: ${({ theme }) => theme.colors.blue};
   background: transparent;
   border: 1px solid ${({ theme }) => theme.colors.lightBlue};
   border-radius: 40px;
   font-family: ${({ theme }) => theme.fonts.main.lightBlue};
-  font-size: 18px;
   line-height: 1.1;
-
-  letter-spacing: 0.04em;
-  color: ${({ theme }) => theme.colors.blue};
-
+  text-align: center;
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.colors.white};
@@ -159,22 +162,21 @@ export const EventBtn = styled(Link)`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
   }
 `;
 
 export const CalendarBtn = styled(Link)`
-  width: auto;
-  text-align: center;
-  padding: 10px 20px 10px 20px;
+  line-height: 1.1;
   background: transparent;
   border: 1px solid ${({ theme }) => theme.colors.lightBlue};
   border-radius: 40px;
   font-family: ${({ theme }) => theme.fonts.main.lightBlue};
-  font-size: 18px;
-  line-height: 1.1;
-
   letter-spacing: 0.04em;
   color: ${({ theme }) => theme.colors.blue};
+  text-align: center;
 
   &:hover,
   &:focus {
@@ -200,5 +202,8 @@ export const CalendarBtn = styled(Link)`
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    font-size: 18px;
   }
 `;

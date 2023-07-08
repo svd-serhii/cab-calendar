@@ -93,3 +93,55 @@ button {
   max-width: 100vw;
   overflow: hidden;
 }
+
+/* styles for fullcalendar  */
+
+@media screen and (min-width: 480px) {
+  .fc .fc-toolbar-title {
+    font-size: 1em;
+  }
+
+  .fc .fc-button {
+    font-size: 0.75em;
+    padding: 0.31em 0.5em;
+  }
+
+  .fc .fc-daygrid-day-bottom {
+    font-size: 0.5em;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 0.75em;
+  }
+
+  .fc .fc-col-header-cell-cushion {
+    font-size: 0.85em;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fc .fc-toolbar-title {
+    font-size: 1em;
+  }
+
+  .fc .fc-button {
+    font-size: 0.75em;
+    padding: 0.31em 0.5em;
+  }
+
+  .fc .fc-daygrid-day-bottom {
+    font-size: 0.5em;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 0.75em;
+  }
+
+  .fc .fc-col-header-cell-cushion {
+    font-size: 0.85em;
+  }
+
+  .fc-direction-ltr .fc-daygrid-event .fc-event-tim {
+    font-size: 0.75em;
+  }
+}

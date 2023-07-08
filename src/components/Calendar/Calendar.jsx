@@ -71,6 +71,14 @@ const Calendar = () => {
             dayMaxEvents={true}
             weekends={true}
             nowIndicator={true}
+            timeZone="Ukraine/Kyiv"
+            titleFormat={{
+              month: 'long',
+              day: '2-digit',
+            }}
+            slotMinTime="09:00:00"
+            slotMaxTime="19:00:00"
+            hour12="false"
           />
         </CalendarStyled>
       </Wrapper>
