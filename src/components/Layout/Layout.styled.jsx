@@ -9,13 +9,10 @@ export const Main = styled.main`
   /* flex-wrap: wrap; */
   justify-content: center;
   /* height: calc(${({ screenHeight }) => screenHeight} - 72px); */
-  padding: 10px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
-    padding: 10px;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
-    padding: 10px;
   }
 `;

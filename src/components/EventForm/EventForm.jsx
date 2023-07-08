@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSession } from '@supabase/auth-helpers-react';
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -20,15 +20,7 @@ import {
 } from './EventForm.styled';
 
 const EventForm = () => {
-  const [start, setStart] = useState(new Date());
-  const [end, setEnd] = useState(new Date());
-  const [name, setName] = useState('');
-  const [brand, setBrand] = useState('');
-  const [region, setRegion] = useState('');
-  const [branch, setBranch] = useState('');
-  const [loan, setLoan] = useState('');
-  const [eventDescription, setEventDescription] = useState('');
-
+  const calendarId = process.env.REACT_APP_CALENDAR_ID;
   const session = useSession();
 
   const initialValues = {
@@ -39,6 +31,7 @@ const EventForm = () => {
     loan: '',
     start: new Date(),
     end: new Date(),
+    eventDescription: '',
   };
 
   // const onSubmit = values => {
@@ -51,15 +44,15 @@ const EventForm = () => {
     region: Yup.string().required("Назва міста обов'язкове!"),
     branch: Yup.string().required("Назва відділення обов'язкове!"),
     loan: Yup.string().required("Сума кредиту обов'язкова!"),
-    // start: Yup.date().required("Час призначення угоди обов'язковий!"),
-    // end: Yup.date().required("Час закінчення угоди обов'язковий!"),
+    start: Yup.date(),
+    end: Yup.date(),
   });
 
   const createCalendarEvent = async (values, { isSubmitting, resetForm }) => {
     console.log('Creating calendar event');
     const event = {
       summary: values.name,
-      description: eventDescription,
+      description: values.eventDescription,
       start: {
         dateTime: values.start.toISOString(), // Date.toISOString() ->
         timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -78,7 +71,7 @@ const EventForm = () => {
       },
     };
     await fetch(
-      'https://www.googleapis.com/calendar/v3/calendars/3cb2b605ac5379791713da02667bb0e5909508ffccc2401191aa79b8de9fd7f8@group.calendar.google.com/events',
+      `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events`,
       {
         method: 'POST',
         headers: {
@@ -95,7 +88,7 @@ const EventForm = () => {
         if (data.error) {
           toast.error(data.error.message);
         } else {
-          toast.success('Угоду призначено, перевірте свій Google Calendar!');
+          toast.success('Угоду призначено, перевірте календар!');
         }
       });
 
@@ -110,62 +103,111 @@ const EventForm = () => {
         onSubmit={createCalendarEvent}
         validationSchema={validationSchema}
       >
-        {({ isSubmitting }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleBlur,
+          handleChange,
+          handleSubmit,
+          isSubmitting,
+          resetForm,
+        }) => (
           <Form>
-            <FieldContainer>
+            <FieldContainer
+              error={errors.name && touched.name}
+              style={{
+                borderColor: errors.name && touched.name ? '#F43F5E' : null,
+              }}
+            >
               <FieldStyled
                 type="text"
                 id="name"
                 name="name"
                 placeholder="Прізвище клієнта"
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </FieldContainer>
             <ErrorContainer>
               <ErrorMessage name="name" component="span" />
             </ErrorContainer>
 
-            <FieldContainer>
+            <FieldContainer
+              error={errors.brand && touched.brand}
+              style={{
+                borderColor: errors.brand && touched.brand ? '#F43F5E' : null,
+              }}
+            >
               <FieldStyled
                 type="text"
                 id="brand"
                 name="brand"
                 placeholder="Назва марки авто"
+                value={values.brand}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </FieldContainer>
             <ErrorContainer>
               <ErrorMessage name="brand" component="span" />
             </ErrorContainer>
 
-            <FieldContainer>
+            <FieldContainer
+              error={errors.region && touched.region}
+              style={{
+                borderColor: errors.region && touched.region ? '#F43F5E' : null,
+              }}
+            >
               <FieldStyled
                 type="text"
                 id="region"
                 name="region"
                 placeholder="Назва міста"
+                value={values.region}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </FieldContainer>
             <ErrorContainer>
               <ErrorMessage name="region" component="span" />
             </ErrorContainer>
 
-            <FieldContainer>
+            <FieldContainer
+              error={errors.branch && touched.branch}
+              style={{
+                borderColor: errors.branch && touched.branch ? '#F43F5E' : null,
+              }}
+            >
               <FieldStyled
                 type="text"
                 id="branch"
                 name="branch"
                 placeholder="Номер відділення банку"
+                value={values.branch}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </FieldContainer>
             <ErrorContainer>
               <ErrorMessage name="branch" component="span" />
             </ErrorContainer>
 
-            <FieldContainer>
+            <FieldContainer
+              error={errors.loan && touched.loan}
+              style={{
+                borderColor: errors.loan && touched.loan ? '#F43F5E' : null,
+              }}
+            >
               <FieldStyled
                 type="text"
                 id="loan"
                 name="loan"
                 placeholder="Сума кредиту"
+                value={values.loan}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
             </FieldContainer>
             <ErrorContainer>
@@ -174,11 +216,11 @@ const EventForm = () => {
             <DatePickerContainer>
               <DateTitle>Початок угоди</DateTitle>
 
-              <DateTimePicker value={start} onChange={setStart} />
+              <DateTimePicker value={values.start} onChange={handleChange} />
 
               <DateTitle>Кінець угоди</DateTitle>
 
-              <DateTimePicker value={end} onChange={setEnd} />
+              <DateTimePicker value={values.end} onChange={handleChange} />
               <EventBtn type="submit">Призначити</EventBtn>
             </DatePickerContainer>
           </Form>

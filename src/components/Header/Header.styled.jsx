@@ -29,12 +29,37 @@ export const UserWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;
 
 export const User = styled.p`
   font-family: ${({ theme }) => theme.fonts.main.bold};
   font-size: ${({ theme }) => theme.fontSizes[2]};
   color: ${({ theme }) => theme.colors.green};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: ${({ theme }) => theme.fontSizes[0]};
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: ${({ theme }) => theme.fontSizes[0]};
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;
 export const UserBtn = styled.button`
   width: 100px;
@@ -60,16 +85,45 @@ export const UserBtn = styled.button`
   transition: color 300ms ${({ theme }) => theme.transition.main},
     border-color 300ms ${({ theme }) => theme.transition.main},
     background-color 300ms ${({ theme }) => theme.transition.main};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 70px;
+    font-size: 12px;
+    padding: 5px 0 5px 0;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 160px;
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;
 
 export const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;
 
 export const EventBtn = styled(Link)`
   width: auto;
+  text-align: center;
   padding: 10px 20px 10px 20px;
   background: transparent;
   border: 1px solid ${({ theme }) => theme.colors.lightBlue};
@@ -91,11 +145,26 @@ export const EventBtn = styled(Link)`
   transition: color 300ms ${({ theme }) => theme.transition.main},
     border-color 300ms ${({ theme }) => theme.transition.main},
     background-color 300ms ${({ theme }) => theme.transition.main};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 140px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 140px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;
 
 export const CalendarBtn = styled(Link)`
   width: auto;
-  margin-left: 10px;
+  text-align: center;
   padding: 10px 20px 10px 20px;
   background: transparent;
   border: 1px solid ${({ theme }) => theme.colors.lightBlue};
@@ -117,4 +186,19 @@ export const CalendarBtn = styled(Link)`
   transition: color 300ms ${({ theme }) => theme.transition.main},
     border-color 300ms ${({ theme }) => theme.transition.main},
     background-color 300ms ${({ theme }) => theme.transition.main};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 140px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 140px;
+    font-size: 12px;
+    padding: 5px 10px 5px 10px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+  }
 `;

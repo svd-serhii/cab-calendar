@@ -1,12 +1,21 @@
 import styled from '@emotion/styled';
 
 export const ContentWrapper = styled.div`
-  height: 100vh;
-  width: 300px;
-
   display: flex;
-
+  /* border-right: 0.5px solid #9b9ba0; */
   flex-direction: column;
   align-items: center;
-  padding: 2rem 0rem;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    width: 160px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    width: 246px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    width: 400px;
+    height: 600px;
+  }
 `;
