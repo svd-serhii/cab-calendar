@@ -19,3 +19,36 @@ export const ContentWrapper = styled.div`
     height: 600px;
   }
 `;
+
+export const SideBarTitle = styled.h2`
+  margin-top: 10px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 18px;
+  }
+`;
+
+export const LoanContainer = styled.div`
+  margin-top: 10px;
+`;
+export const TotalLoanMonth = styled.p`
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    font-size: 18px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    font-size: 18px;
+  }
+`;

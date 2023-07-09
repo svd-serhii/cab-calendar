@@ -3,18 +3,15 @@ import { AuthBtn, ContentWrapper } from './Auth.styled';
 import { toast } from 'react-toastify';
 import {
   useSupabaseClient,
-  useSessionContext,
-  useSession,
+  // useSessionContext,
+  // useSession,
 } from '@supabase/auth-helpers-react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 const Auth = () => {
   const supabase = useSupabaseClient();
-  const session = useSession();
-  const { isLoading } = useSessionContext();
-  const navigate = useNavigate();
-  console.log(session);
-  console.log(isLoading);
+  // const session = useSession();
+  // const { isLoading } = useSessionContext();
 
   async function googleSignIn() {
     const response = await supabase.auth.signInWithOAuth({
@@ -29,8 +26,8 @@ const Auth = () => {
     }
     if (!response.error) {
       toast.success('Ви авторизувались на сайті!');
+      return <Navigate to="/" />;
     }
-    navigate('/');
   }
 
   return (
