@@ -19,19 +19,22 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<MainPage />} />
+
             <Route element={<PublicRoute />}>
               <Route path="login" element={<Auth />} />
             </Route>
+
             <Route element={<PrivateRoute />}>
               <Route path="calendar" element={<Calendar />} />
               <Route path="event" element={<EventForm />} />
             </Route>
+
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>
 
-      <ToastContainer autoClose={2000} theme="light" />
+      <ToastContainer autoClose={3000} theme="light" />
     </>
   );
 }
