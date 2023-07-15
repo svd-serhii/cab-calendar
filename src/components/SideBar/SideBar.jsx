@@ -12,6 +12,7 @@ const gcId = process.env.REACT_APP_CALENDAR_ID;
 
 const SideBar = () => {
   const session = useSession();
+
   const fetchGoogleCalendarData = async () => {
     try {
       const token = session.provider_token;
